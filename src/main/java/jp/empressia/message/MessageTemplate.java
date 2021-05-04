@@ -27,7 +27,7 @@ public class MessageTemplate {
 
 	/** メッセージを構築して提供します。 */
 	protected String format(Object[] args) {
-		String result = MessageUtilities.format(this.getID(), args, null);
+		String result = MessageUtilities.format(this.getID(), args, Locale.getDefault());
 		return result;
 	}
 
@@ -39,7 +39,7 @@ public class MessageTemplate {
 
 	/** メッセージを構築して提供します。 */
 	protected String toString(Object[] args) {
-		String result = MessageUtilities.format(this.getID(), args, null);
+		String result = MessageUtilities.format(this.getID(), args, Locale.getDefault());
 		return result;
 	}
 
