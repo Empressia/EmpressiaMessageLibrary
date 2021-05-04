@@ -26,38 +26,25 @@ public class MessageTemplate {
 	protected MessageTemplate(String ID) { this.ID = ID; }
 
 	/** メッセージを構築して提供します。 */
-	protected String format(Object[] args) {
-		String result = MessageUtilities.format(this.getID(), args, Locale.getDefault());
+	protected String format(String location, Object[] args) {
+		String result = MessageUtilities.format(location, this.getID(), args, Locale.getDefault());
 		return result;
 	}
 
 	/** メッセージを構築して提供します。 */
-	protected String format(Object[] args, Locale locale) {
-		String result = MessageUtilities.format(this.getID(), args, locale);
+	protected String format(String location, Object[] args, Locale locale) {
+		String result = MessageUtilities.format(location, this.getID(), args, locale);
 		return result;
 	}
 
 	/** メッセージを構築して提供します。 */
-	protected String toString(Object[] args) {
-		String result = MessageUtilities.format(this.getID(), args, Locale.getDefault());
-		return result;
+	protected String format(String location) {
+		return this.format(location, EMPTY_ARGS);
 	}
 
 	/** メッセージを構築して提供します。 */
-	protected String toString(Object[] args, Locale locale) {
-		String result = MessageUtilities.format(this.getID(), args, locale);
-		return result;
-	}
-
-	/** メッセージを構築して提供します。 */
-	@Override
-	public String toString() {
-		return this.toString(EMPTY_ARGS);
-	}
-
-	/** メッセージを構築して提供します。 */
-	public String toString(Locale locale) {
-		return this.toString(EMPTY_ARGS, locale);
+	protected String format(String location, Locale locale) {
+		return this.format(location, EMPTY_ARGS, locale);
 	}
 
 }

@@ -9,5 +9,5 @@ import java.util.Locale;
 @FunctionalInterface
 public interface MessageProvider {
 	/** Localeにあったメッセージ、および、メッセージのテンプレートを提供します。 */
-	public String get(String ID, Locale locale);
+	public String get(String location, String ID, Locale locale);
 }

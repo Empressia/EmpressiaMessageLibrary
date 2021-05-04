@@ -35,21 +35,6 @@ GeneratorやGradle用プラグインを使用してクラスを生成して使�
 
 生成されたクラスの使い方については、Empressia Messageを参照してください。  
 
-### メッセージプロパティの配置場所
-
-読み込まれるメッセージプロパティは、リソースとして、以下の順で探索されます。  
-
-1. message（meessage.propertiesなど）
-2. messages（meessages.propertiesなど）
-
-この動きは、DefaultMessageProviderによるもので、  
-以下のシステムプロパティで上書きできます。  
-
-jp.empressia.message.DefaultMessageProvider.BasePath
-
-MessageProviderを実装し、ServiceLoaderに登録することで、  
-これらの実装を変更できます。  
-
 ## ライセンス
 
 いつも通りのライセンスです。  

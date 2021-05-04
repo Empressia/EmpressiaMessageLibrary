@@ -33,8 +33,8 @@ public class MessageUtilities {
 	}
 
 	/** フォーマットされたメッセージを返します。 */
-	public static String format(String ID, Object[] args, Locale locale) {
-		String result = MessageProvider.get(ID, locale);
+	public static String format(String location, String ID, Object[] args, Locale locale) {
+		String result = MessageProvider.get(location, ID, locale);
 		if(args.length > 0) {
 			MessageFormat formatter = MessageFormats.computeIfAbsent(result, MessageFormat::new);
 			// 同じFormatterが同時に呼ばれる可能性は高くないと思うから、

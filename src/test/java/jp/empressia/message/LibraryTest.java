@@ -4,7 +4,6 @@ import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-import java.util.Arrays;
 import java.util.Locale;
 
 import org.junit.jupiter.api.Test;
@@ -18,7 +17,7 @@ public class LibraryTest {
 	@Test
 	public void loadResource() {
 		DefaultMessageProvider messageProvider = new DefaultMessageProvider();
-		String m = messageProvider.get("TEST0000", Locale.getDefault());
+		String m = messageProvider.get("message", "TEST0000", Locale.getDefault());
 		assertAll(
 			() -> assertThat("メッセージを取得できる。", m, is(notNullValue()))
 		);
@@ -36,7 +35,7 @@ public class LibraryTest {
 	/** メッセージプロバイダーを読み込める。 */
 	@Test
 	public void formatMessage() {
-		String m = new MessageTemplate("TEST0000").format(new Object[0]);
+		String m = new MessageTemplate("TEST0000").format("message", new Object[0]);
 		assertAll(
 			() -> assertThat("メッセージが得られる。", m, is(notNullValue()))
 		);
