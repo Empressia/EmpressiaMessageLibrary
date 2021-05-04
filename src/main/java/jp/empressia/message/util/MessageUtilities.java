@@ -14,6 +14,13 @@ import jp.empressia.message.MessageProvider;
  */
 public class MessageUtilities {
 
+	/**
+	 * メッセージ用の文字列をフォーマットとして、再利用するために維持します。
+	 * 同じメッセージが同時に大量アクセスされない想定でいるので、ThreadLocalは使っていません。
+	 * ThreadLocalするくらいなら、MessageFormatがスレッドセーフであるべきだと思っています。
+	 */
+	private static ConcurrentHashMap<String, MessageFormat> MessageFormats = new ConcurrentHashMap<String, MessageFormat>();
+
 	/** メッセージ用の文字列を提供するProvider。 */
 	private static MessageProvider MessageProvider = loadMessageProvider();
 
@@ -24,13 +31,6 @@ public class MessageUtilities {
 		MessageFormats.clear();
 		return provider;
 	}
-
-	/**
-	 * メッセージ用の文字列をフォーマットとして、再利用するために維持します。
-	 * 同じメッセージが同時に大量アクセスされない想定でいるので、ThreadLocalは使っていません。
-	 * ThreadLocalするくらいなら、MessageFormatがスレッドセーフであるべきだと思っています。
-	 */
-	private static ConcurrentHashMap<String, MessageFormat> MessageFormats = new ConcurrentHashMap<String, MessageFormat>();
 
 	/** フォーマットされたメッセージを返します。 */
 	public static String format(String ID, Object[] args, Locale locale) {

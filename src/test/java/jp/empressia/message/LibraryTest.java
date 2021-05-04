@@ -8,6 +8,8 @@ import java.util.Locale;
 
 import org.junit.jupiter.api.Test;
 
+import jp.empressia.message.util.MessageUtilities;
+
 /** ライブラリのテストです。 */
 public class LibraryTest {
 
@@ -18,6 +20,15 @@ public class LibraryTest {
 		String m = messageProvider.get("TEST0000", Locale.getDefault());
 		assertAll(
 			() -> assertThat("メッセージを取得できる。", m, is(notNullValue()))
+		);
+	}
+
+	/** メッセージプロバイダーを読み込める。 */
+	@Test
+	public void loadMessage() {
+		MessageProvider provider = MessageUtilities.loadMessageProvider();
+		assertAll(
+			() -> assertThat("MessageProviderが得られる。", provider, is(notNullValue()))
 		);
 	}
 
